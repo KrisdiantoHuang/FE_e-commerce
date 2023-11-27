@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.bg-custom {
+  background-color: #cce5ff;
+}
+
+html,
+body {
+  font-family: 'montserrat';
+}
+
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.img-container {
+  background-color: #F5F5EB;
+  height: 35rem;
+  border-radius: 0.9375rem;
+  margin: auto;
+  display: inline-block;
+}
+
+.pesanan-container{
+  border: 1px solid #DACDCD;
+  height: 50rem;
+  border-radius: 0.9375rem;
+  margin: auto;
+  display: inline-block;
+}
+
+.hover-container {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  height: 12rem;
+  padding: 5px;
+
+}
+
+.hover-container div {
+  background-color: #F5F5EB;
+  padding: 10px;
+  border-radius: 0.9375rem;
+  overflow: visible;
+}
+
+.hover-container div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hover-container div:hover {
+  transform: scale(1.02);
+}
+
+.product-name {
+  font-size: 3.0625rem;
+  font-style: underline;
+  font-weight: 700;
+  line-height: 1.5rem;
+  padding-top: 50px;
+  display: block;
+  text-decoration: underline;
+}
+
+.rectangle-tag {
+  background-color: #F5F5EB;
+  width: 13.25rem;
+  height: 2.4375rem;
+  border-radius: 0.8375rem;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-price {
+  font-family: Arvo;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.rate h4 {
+  color: #1E1E1E;
+  text-align: justify;
+  font-family: Montserrat;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+  padding-top: 25px;
+}
+
+.star-prod {
+  color: #ffc107;
+  text-align: justify;
+  font-family: Montserrat;
+  font-size: 1.2875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2rem;
+}
+
+.deskripsi h4 {
+  color: #1E1E1E;
+  text-align: justify;
+  font-family: Montserrat;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+  padding-top: 25px;
+}
+
+.deskripsi p {
+  color: #000;
+  text-align: justify;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Montserrat;
+  font-size: 0.80625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.pesanan h3 {
+  padding-top: 40px;
+  padding-left: 20px;
+  color: #000;
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.kuantitas {
+  background-color: #F5F5EB;
+  width: 12.4375rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  border-radius: 0.9375rem;
+  display: flex;
+}
+
+.min {
+  font-size: 2em;
+}
+
+.add {
+  font-size: 2em;
+}
+
+.kuantitas h5 {
+  font-size: 2.5rem;
+  justify-content: center;
+  padding: 40px 10px 40px 10px;
+}
+
+.cart h3 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+
+}
+
+.cart {
+  padding-top: 35px;
+  padding-left: 100px;
+}
+
+.cart button {
+  width: 10rem;
+  height: 3rem;
+}
+
+.buy {
+  padding-top: 30px;
+  padding-left: 100px;
+}
+
+.buy button {
+  width: 10rem;
+  height: 3rem;
+}
+
+.buy h3 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+
+.catatan {
+  color: #1E1E1E;
+  text-align: justify;
+  font-family: Montserrat;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+}

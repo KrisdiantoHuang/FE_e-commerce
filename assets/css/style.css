@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+body {
+  background-color: #f8f9fa;
+}
+
+.bg-custom {
+  background-color: #cce5ff;
+}
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.filter {
+  font-family: Montserrat;
+  width: 900px;
+  background-color: white;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1032;
+  visibility: hidden;
+}
+
+.filterOn {
+  visibility: visible;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1031;
+  cursor: pointer;
+}
+
+.overlayOn {
+  display: block !important;
+}
+
+.flex-row div {
+  border-radius: 5px;
+  border: 0.5px solid#d0d4d8;
+}
+
+.row .card:hover {
+  transform: scale(1.02);
+}
+
+.img-account-profile {
+  height: 10rem;
+  width: 150px; 
+  height: 150px; object-fit: cover; 
+  object-position: center;
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.inputfile {
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+input[type="file"]{
+  display: none;
+}
+.gambar{
+  display: block;
+  position: relative;
+  background-color: #025bee;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  width: 300px;
+  padding: 18px 0;
+  margin: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gambar-produk {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.gambar-produk img {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+}
