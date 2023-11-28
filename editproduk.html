@@ -11,6 +11,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://kit.fontawesome.com/664bfabc20.js" crossorigin="anonymous"></script>
+    <script src="env.js"></script>
     <title>Apple Store</title>
 </head>
 
@@ -145,46 +146,38 @@
                 </div>
                 <br>
                 <br>
-                <div class="row justify-content-center">
-                    <!-- left column -->
-                    <div class=" pt-1 ">
-                        <div class="card-body text-center">
-
-                            <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()"
-                                multiple>
-                            <div class="gambar-produk" id="images">
-
-                            </div>
-                            <p id="num-of-files">No Files Chosen</p>
-                            <label class="gambar" for="file-input">
-                                <i class="fas fa-upload"></i> &nbsp; Choose A Photo
-                            </label>
-
-
-
-
-
-                        </div>
-                    </div>
 
                     <!-- edit form column -->
+                    <form action="" id="formProduk" enctype="multipart/form-data">
+                    <div class="row justify-content-center">
+                      <!-- left column -->
+                      <div class=" pt-1 ">
+                          <div class="card-body text-center">
+  
+                              <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()"
+                                  multiple>
+                              <div class="gambar-produk" id="images">
+  
+                              </div>
+                              <p id="num-of-files">No Files Chosen</p>
+                              <label class="gambar" for="file-input">
+                                  <i class="fas fa-upload" name="gambar_brg"></i> &nbsp; Choose A Photo
+                              </label>
+                          </div>
+                      </div>
                     <div class="col-md-9 personal-info">
-
-
-
-                        <form class="form-horizontal" role="form">
                             <div class="form-group row">
                                 <label class="col-lg-3 control-label">Kode Barang</label>
                                 <label for="">:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control bg-custom" type="text" value="" placeholder="Kode Barang">
+                                    <input class="form-control bg-custom" type="text" value="" placeholder="Kode Barang" name="kode_brg">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 control-label">Nama Barang</label>
                                 <label for="">:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control bg-custom" type="text" value="" placeholder="Nama Barang">
+                                    <input class="form-control bg-custom" type="text" value="" placeholder="Nama Barang" name="nama_brg">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -197,7 +190,7 @@
                                         </div>
                                         <input class="form-control bg-custom" type="text"
                                             oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-                                            placeholder="Harga Barang">
+                                            placeholder="Harga Barang" name="harga_brg">
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +198,7 @@
                                 <label class="col-lg-3 control-label">Kategori</label>
                                 <label for="">:</label>
                                 <div class="col-lg-7">
-                                    <select class="form-control bg-custom" name="" id="">
+                                    <select class="form-control bg-custom" name="id_kategori" id="">
                                         <option value="">- Pilih -</option>
                                         <option value="">Smartphone</option>
                                         <option value="">Laptop</option>
@@ -217,28 +210,27 @@
                                 <label class="col-lg-3 control-label">Stock Barang</label>
                                 <label for="">:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control bg-custom" type="text" value="" placeholder="Stock Barang">
+                                    <input class="form-control bg-custom" type="text" value="" placeholder="Stock Barang" name="stok_brg">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 control-label">Deskripsi</label>
                                 <label for="">:</label>
                                 <div class="col-lg-7">
-                                    <textarea class="form-control bg-custom" id="" cols="10" rows="5"></textarea>
+                                    <textarea class="form-control bg-custom" id="" cols="10" rows="5" name="deskripsi_brg"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row p-3">
                                 <div class="col-10 text-right">
                                     <a href="produk_anda.html" class="m-2 btn btn-secondary btn-lg"
                                         role="button">Kembali</a>
-                                    <a href="#" class="m-2 btn btn-primary btn-lg"
-                                        role="button">Tambahkan Produk</a>
+                                    <input type="submit" name="simpan" class="btn btn-primary btn-lg" value="Tambahkan Produk">
+
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
-
+              </form>
             </div>
         </div>
     </div>
@@ -255,13 +247,10 @@
             </p>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/produk/edit_produk.js"></script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
