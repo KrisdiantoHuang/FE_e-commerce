@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Lakukan permintaan AJAX menggunakan metode GET
     $.ajax({
-        url: host+'/dummy/read_produk.php',
+        url: host+'/read_produk.php',
         type: 'GET',
         dataType: 'json',
         success: function (response) {
