@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: host + "/read_kategori.php",
+        url: host + "kategori/read_kategori.php",
         dataType: "json",
         async: true,
         success: function (data) {

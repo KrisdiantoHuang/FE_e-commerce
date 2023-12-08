@@ -1,1 +1,1 @@
-var host = "http://localhost/fe_e-commerce/dummy";
+var host = "http://localhost/be_e-commerce/";
