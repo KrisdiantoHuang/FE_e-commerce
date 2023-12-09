@@ -1,7 +1,7 @@
 $(document).on('click', '.btn-danger', function () {
     $.ajax({
         type: 'DELETE',
-        url: host + "produk/delete_produk.php",
+        url: host + "/delete_produk.php",
         async: true,
         success: function (data) {
             if (data.status === 200) {
