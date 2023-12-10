@@ -3,7 +3,7 @@ $('#formKategori').submit(function(e){
     var formData = new FormData(this);
     $.ajax({
         type: 'POST',
-        url: host+"/update_kategori.php",
+        url: host+"kategori/update_kategori.php",
         data: formData,
         cache: false, contentType: false, processData: false, dataType: 'json',
         success: (result) => {
