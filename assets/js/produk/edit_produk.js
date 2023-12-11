@@ -3,7 +3,7 @@ $('#formProduk').submit(function(e){
     var formData = new FormData(this);
     $.ajax({
         type: 'POST',
-        url: host+"/update_produk.php",
+        url: host+"produk/update_produk.php",
         data: formData,
         cache: false, contentType: false, processData: false, dataType: 'json',
         success: (result) => {
