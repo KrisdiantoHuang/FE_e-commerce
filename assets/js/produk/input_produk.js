@@ -8,7 +8,7 @@ $('#formProduk').submit(function(e){
         cache: false, contentType: false, processData: false, dataType: 'json',
         success: (result) => {
             console.log(result);
-            window.location.replace(host+"/produk_anda.html");
+            window.location.replace("produk_anda.html");
         },
         error: (a) => {
             //if error
