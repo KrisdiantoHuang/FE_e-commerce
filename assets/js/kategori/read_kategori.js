@@ -17,6 +17,7 @@ $(document).ready(function () {
                     $('#kategori tbody').append(
                         '<tr>' +
                         '<td>' + (i + 1) + '</td>' +
+                        '<td hidden>' + kategori[i].id_kategori + '</td>' +
                         '<td>' + kategori[i].nama_kategori + '</td>' +
                         '<td>' +
                         '<a href="editkategori.html"' +
