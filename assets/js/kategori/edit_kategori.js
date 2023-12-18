@@ -1,17 +1,28 @@
-$('#formKategori').submit(function(e){
-    e.preventDefault();
-    var formData = new FormData(this);
+// Add this function at the beginning of edit_kategori.js
+function submitForm() {
+    var formData = {
+        id_kategori: categoryId,
+        nama_kategori: $('#kategori').val()
+    };
+
     $.ajax({
-        type: 'POST',
-        url: host+"kategori/update_kategori.php",
+        type: "POST",
+        url: host + "kategori/update_kategori.php",
         data: formData,
-        cache: false, contentType: false, processData: false, dataType: 'json',
-        success: (result) => {
-            console.log(result);
-            window.location.replace(host+"/kategori.html");
+        dataType: "json",
+        async: true,
+        success: function (data) {
+            if (data.status === 200) {
+                // Handle success, e.g., redirect to the category list page
+                window.location.href = "kategori.html";
+            } else {
+                console.log('Failed to update category');
+            }
         },
-        error: (a) => {
-            //if error
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
         }
     });
-})
+}
+
+// The existing code for fetching category data can remain as it is.
