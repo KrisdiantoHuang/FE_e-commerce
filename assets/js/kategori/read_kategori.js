@@ -20,7 +20,7 @@ $(document).ready(function () {
                         '<td hidden>' + kategori[i].id_kategori + '</td>' +
                         '<td>' + kategori[i].nama_kategori + '</td>' +
                         '<td>' +
-                        '<a href="editkategori.html"' +
+                        '<a href="editkategori.html?id=' + kategori[i].id_kategori + '">' +
                         '<button class="btn btn-success btn-md m-2">' +
                         '<i class="fa fa-edit"></i>' +
                         '</button>' +
@@ -44,4 +44,5 @@ $(document).ready(function () {
         }
     });
 });
+
 

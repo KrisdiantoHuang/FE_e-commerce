@@ -137,7 +137,7 @@
         font-family: Montserrat;
         font-style: normal;
       ">
-                <form action="" id="formKategori">
+                <form action="" id="formKategori" onsubmit="submitForm(); return false;">
                 <div class="card card-primary" style="border-color: white;">
                     <div class="card-header" style="border-bottom: none; background-color: white;">
                         <h3 class="card-title">
@@ -156,15 +156,19 @@
                             </div>
                         </div>
                         <div class="card-footer" style="border-top: none; background-color: white;">
-                            <input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
-                            <a href="kategori.html" title="Kembali" class="btn btn-secondary">Batal</a>
-                        </div>
+                          <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                          <a href="kategori.html" title="Kembali" class="btn btn-secondary">Batal</a>
+                      </div>
                 </div>
               </form>
             </div>
         </div>
     </div>
     <br><br>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryId = urlParams.get('id');
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="assets/js/kategori/edit_kategori.js"></script>
     <!-- Optional JavaScript -->
