@@ -15,6 +15,7 @@ $(document).ready(function () {
                 for (var i = 0; i < response.body.data.length; i++) {
                     tbodyContent += `
                         <tr>
+                        <td hidden>${response.body.data[i].kode_brg}</td>
                             <th style="width: 10%;" class="align-middle" colspan="2" rowspan="5">
                                 <img class="bg-white" src="assets/img/produk/${response.body.data[i].gambar_brg}" alt=""
                                     style="width: 200px; border-radius: 20px">
@@ -48,9 +49,7 @@ $(document).ready(function () {
                         <tr>
                             <td><strong>Deskripsi</strong></td>
                             <td colspan="2">${response.body.data[i].deskripsi_brg}</td>
-                        </tr>
-                        <br>
-                        <br>`;
+                        </tr>`;
                 }
 
                 // Append the generated content to the tbody
