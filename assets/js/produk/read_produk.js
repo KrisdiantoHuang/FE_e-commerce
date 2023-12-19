@@ -28,7 +28,7 @@ $(document).ready(function () {
                                 </button>
                                 <br />
                                 <br />
-                                <a href="editproduk.html">
+                                <a href="editproduk.html?kode_brg=${response.body.data[i].kode_brg}">
                                     <button class="btn btn-success btn-md">
                                         <i class="fa fa-edit"></i>
                                     </button>
@@ -58,7 +58,6 @@ $(document).ready(function () {
 
             } else {
                 console.error('Gagal mengambil data dari API.');
-                console.log(urlGambar);
             }
         },
         error: function () {
