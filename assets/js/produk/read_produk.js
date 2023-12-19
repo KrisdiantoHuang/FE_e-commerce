@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var urlGambar = host + "produk/gambar/";
     // Lakukan permintaan AJAX menggunakan metode GET
     $.ajax({
         type: "GET",
@@ -17,7 +18,7 @@ $(document).ready(function () {
                         <tr>
                         <td hidden>${response.body.data[i].kode_brg}</td>
                             <th style="width: 10%;" class="align-middle" colspan="2" rowspan="5">
-                                <img class="bg-white" src="assets/img/produk/${response.body.data[i].gambar_brg}" alt=""
+                                <img class="bg-white" src="` + urlGambar +`${response.body.data[i].gambar_brg}" alt=""
                                     style="width: 200px; border-radius: 20px">
                             </th>
                             <th class="bg-white text-center" style="border-radius: 20px" colspan="3">${response.body.data[i].nama_brg}</th>
@@ -40,7 +41,7 @@ $(document).ready(function () {
                         </tr>
                         <tr>
                             <td><strong>Kategori</strong></td>
-                            <td colspan="2">${response.body.data[i].id_kategori}</td>
+                            <td colspan="2">${response.body.data[i].nama_kategori}</td>
                         </tr>
                         <tr>
                             <td><strong>Stok</strong></td>
@@ -57,6 +58,7 @@ $(document).ready(function () {
 
             } else {
                 console.error('Gagal mengambil data dari API.');
+                console.log(urlGambar);
             }
         },
         error: function () {
