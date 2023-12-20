@@ -29,27 +29,10 @@ $('#formProduk').submit(function (e) {
         dataType: 'json',
         success: function (result) {
             console.log(result);
-            window.location.replace("produk_anda.html");
+            window.location.replace("?page=produk_anda");
         },
         error: function (error) {
             console.error(error);
         }
     });
 });
-
-function preview() {
-    var input = document.getElementById('file-input');
-    var imageContainer = document.getElementById('image-container');
-
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        imageContainer.src = e.target.result;
-
-
-    };
-
-    reader.readAsDataURL(input.files[0]);
-}
-
-

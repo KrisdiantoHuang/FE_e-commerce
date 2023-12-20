@@ -1,5 +1,6 @@
-// Add this function at the beginning of edit_kategori.js
 function submitForm() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryId = urlParams.get('id');
     var formData = {
         id_kategori: categoryId,
         nama_kategori: $('#kategori').val()
@@ -13,8 +14,7 @@ function submitForm() {
         async: true,
         success: function (data) {
             if (data.status === 200) {
-                // Handle success, e.g., redirect to the category list page
-                window.location.href = "kategori.html";
+                window.location.href = "?page=kategori";
             } else {
                 console.log('Failed to update category');
             }
@@ -25,4 +25,3 @@ function submitForm() {
     });
 }
 
-// The existing code for fetching category data can remain as it is.
