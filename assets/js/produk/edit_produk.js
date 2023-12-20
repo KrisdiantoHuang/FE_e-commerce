@@ -1,17 +1,51 @@
-$('#formProduk').submit(function(e){
+$(document).ready(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const kode_brg = urlParams.get('kode_brg');
+
+    if (kode_brg) {
+        // If kode_brg is present in the URL, set it in the input field
+        $('#kode_brg').val(kode_brg);
+    }
+});
+
+$('#formProduk').submit(function (e) {
     e.preventDefault();
-    var formData = new FormData(this);
+
+    // Menggunakan FormData untuk menangani file gambar
+    const formData = new FormData(this);
+
+    // Melakukan permintaan AJAX untuk memperbarui data menggunakan API
     $.ajax({
         type: 'POST',
-        url: host+"produk/update_produk.php",
+        url: host + 'produk/update_produk.php',
         data: formData,
-        cache: false, contentType: false, processData: false, dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
         success: (result) => {
             console.log(result);
-            window.location.replace("produk_anda.html");
+            window.location.replace('produk_anda.html');
         },
-        error: (a) => {
-            //if error
-        }
+        error: (xhr, status, error) => {
+            console.error(xhr.responseText); // Log the full response for debugging
+            console.error("Status:", status);
+            console.error("Error:", error);
+
+            // Handle error as needed
+        },
     });
-})
+});
+
+function preview() {
+    var input = document.getElementById('file-input');
+    var imageContainer = document.getElementById('image-container');
+
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        imageContainer.src = e.target.result;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+}
