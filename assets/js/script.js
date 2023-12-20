@@ -1,3 +1,5 @@
+// FILTER \\
+
 function on() {
   var filter = document.getElementById("filter");
   var overlay = document.getElementById("overlay");
@@ -18,35 +20,28 @@ function on() {
       overlay.style.display = "none";
     }
   });
-
-}
-let fileInput = document.getElementById("file-input");
-let imageContainer = document.getElementById("images");
-let numOfFiles = document.getElementById("num-of-files");
-
-function preview() {
-  imageContainer.innerHTML = "";
-  numOfFiles.textContent = `${fileInput.files.length} Files Selected`;
-
-  for (i of fileInput.files) {
-    let reader = new FileReader();
-    let figure = document.createElement("figure");
-    reader.onload = () => {
-      let img = document.createElement("img");
-      img.setAttribute("src", reader.result);
-      figure.appendChild(img); // Hanya menambahkan elemen gambar
-    }
-    imageContainer.appendChild(figure);
-    reader.readAsDataURL(i);
-  }
 }
 
-document.getElementById('file').onchange = function () {
-  var reader = new FileReader();
+// FILTER \\
 
-  reader.onload = function (e) {
-    document.getElementById("preview-image").src = e.target.result;
-  };
+// PREVIEW GAMBAR \\
 
-  reader.readAsDataURL(this.files[0]);
-};
+const imgInput = document.getElementById('image')
+const previewZone = document.getElementById('preview')
+
+imgInput.addEventListener("change", () => {
+    const file = imgInput.files[0]
+    const reader = new FileReader;
+
+    reader.addEventListener("load", () => {
+        previewZone.innerHTML = ""
+        const img = document.createElement("img")
+        img.src = reader.result
+
+        previewZone.appendChild(img)
+    })
+
+    reader.readAsDataURL(file)
+})
+
+// PREVIEW GAMBAR \\

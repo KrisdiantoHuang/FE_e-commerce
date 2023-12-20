@@ -25,7 +25,7 @@ $('#formProduk').submit(function (e) {
         dataType: 'json',
         success: (result) => {
             console.log(result);
-            window.location.replace('produk_anda.html');
+            window.location.replace('?page=produk_anda');
         },
         error: (xhr, status, error) => {
             console.error(xhr.responseText); // Log the full response for debugging
@@ -36,16 +36,3 @@ $('#formProduk').submit(function (e) {
         },
     });
 });
-
-function preview() {
-    var input = document.getElementById('file-input');
-    var imageContainer = document.getElementById('image-container');
-
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        imageContainer.src = e.target.result;
-    };
-
-    reader.readAsDataURL(input.files[0]);
-}
