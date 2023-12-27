@@ -51,6 +51,7 @@ if (!isset($_REQUEST['page'])) {
     <?php include "component/footer.php" ?>
     <!-- /Footer -->
 
+    <script src="assets/js/<?= $_REQUEST['page'].".js" ?>"></script>
     <script src="assets/js/script.js"></script>
 
 </body>

@@ -1,18 +1,19 @@
-// API DELETE PRODUK \\
+// API READ PRODUK \\
 
-$(document).ready(function () {
-    var urlGambar = host + "produk/gambar/";
-    // Lakukan permintaan AJAX menggunakan metode GET
+var currentPage = 1; // Initial page
+var urlGambar = host + "produk/gambar/"
+
+function fetchProducts(page) {
     $.ajax({
         type: "GET",
         url: host + "produk/read_produk.php",
         dataType: "json",
+        data: { page: page }, // Pass the page number to the API
         async: true,
         success: function (response) {
             if (response.status === 200) {
                 console.log(response);
 
-                // Assuming response.body.data is an array of products
                 var tbodyContent = '';
 
                 for (var i = 0; i < response.body.data.length; i++) {
@@ -20,7 +21,7 @@ $(document).ready(function () {
                         <tr>
                         <td hidden>${response.body.data[i].kode_brg}</td>
                             <th style="width: 10%;" class="align-middle" colspan="2" rowspan="5">
-                                <img class="bg-white" src="` + urlGambar +`${response.body.data[i].gambar_brg}" alt=""
+                                <img class="bg-white" src="` + urlGambar + `${response.body.data[i].gambar_brg}" alt=""
                                     style="width: 200px; border-radius: 20px">
                             </th>
                             <th class="bg-white text-center" style="border-radius: 20px" colspan="3">${response.body.data[i].nama_brg}</th>
@@ -55,17 +56,32 @@ $(document).ready(function () {
                         </tr>`;
                 }
 
-                // Append the generated content to the tbody
                 $('#produk tbody').html(tbodyContent);
-
             } else {
-                console.error('Gagal mengambil data dari API.');
+                console.error('Failed to fetch data from API.');
             }
         },
         error: function () {
-            console.error('Terjadi kesalahan dalam permintaan AJAX.');
+            console.error('Error in AJAX request.');
         }
     });
+}
+
+// Initial fetch for the first page
+fetchProducts(currentPage);
+
+// Next Page Button Click
+$(document).on('click', '#nextPage', function () {
+    currentPage++;
+    fetchProducts(currentPage);
+});
+
+// Previous Page Button Click
+$(document).on('click', '#prevPage', function () {
+    if (currentPage > 1) {
+        currentPage--;
+        fetchProducts(currentPage);
+    }
 });
 
 // API READ PRODUK \\
