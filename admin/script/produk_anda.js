@@ -17,6 +17,14 @@ function fetchProducts(page) {
                 var tbodyContent = '';
 
                 for (var i = 0; i < response.body.data.length; i++) {
+
+                    var formattedHarga = parseFloat(response.body.data[i].harga_brg).toLocaleString('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0
+                    });
+
                     tbodyContent += `
                         <tr>
                         <td hidden>${response.body.data[i].kode_brg}</td>
@@ -40,7 +48,7 @@ function fetchProducts(page) {
                         </tr>
                         <tr>
                             <td><strong>Harga</strong></td>
-                            <td colspan="2">${response.body.data[i].harga_brg}</td>
+                            <td colspan="2">${formattedHarga}</td>
                         </tr>
                         <tr>
                             <td><strong>Kategori</strong></td>
