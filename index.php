@@ -41,7 +41,7 @@ if (!isset($_REQUEST['page'])) {
     <?php include "component/navbar.php" ?>
     <!-- /Navbar -->
     <!-- Searchbar -->
-    <?php include "component/search.php" ?>
+    <?php include "component/search.php" ?> 
     <!-- /Searchbar -->
     <!-- Content  -->
     <?php include $_REQUEST['page'] . ".php"; ?>
@@ -51,6 +51,7 @@ if (!isset($_REQUEST['page'])) {
     <?php include "component/footer.php" ?>
     <!-- /Footer -->
 
+    <script src="assets/js/<?= $_REQUEST['page'].".js" ?>"></script>
     <script src="assets/js/script.js"></script>
 
 </body>
