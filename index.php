@@ -26,6 +26,7 @@ if (!isset($_REQUEST['page'])) {
     }
     ?>
     <link rel="stylesheet" href="<?php echo $page_css; ?>" />
+    <link rel="stylesheet" href="assets/css/filter.css" />
 
     <script src="https://kit.fontawesome.com/664bfabc20.js" crossorigin="anonymous"></script>
 
