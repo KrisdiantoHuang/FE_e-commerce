@@ -24,7 +24,7 @@ $(document).ready(function () {
 
             var productCard = `
                 <div class="col-3">
-                    <a href="?page=detail-produk">
+                    <a href="?page=detail-produk&kode_brg=${product.kode_brg}">
                         <div class="card">
                             <img style="background-color: #f5f5eb" src="${urlGambar}${product.gambar_brg}" alt="${product.nama_produk}" />
                             <div class="card-body">
