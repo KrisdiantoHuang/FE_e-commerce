@@ -41,7 +41,7 @@ if (!isset($_REQUEST['page'])) {
     <?php include "component/navbar.php" ?>
     <!-- /Navbar -->
     <!-- Searchbar -->
-    <?php include "component/search.php" ?>
+    <?php include "component/search.php" ?> 
     <!-- /Searchbar -->
     <!-- Content  -->
     <?php include $_REQUEST['page'] . ".php"; ?>

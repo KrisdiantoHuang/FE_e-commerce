@@ -1,95 +1,118 @@
 // API READ PRODUK \\
 
-var currentPage = 1; // Initial page
-var urlGambar = host + "produk/gambar/"
+$(document).ready(function () {
+    var urlGambar = host + "produk/gambar/";
+    var currentPage = 1;  // Initialize current page
+    var itemsPerPage = 4; // Number of items to display per page
 
-function fetchProducts(page) {
-    $.ajax({
-        type: "GET",
-        url: host + "produk/read_produk.php",
-        dataType: "json",
-        data: { page: page }, // Pass the page number to the API
-        async: true,
-        success: function (response) {
-            if (response.status === 200) {
-                console.log(response);
+    function displayProducts(response) {
+        var dataProduk = $("#produk");
+        dataProduk.empty(); // Clear existing data
 
-                var tbodyContent = '';
+        // Calculate the start and end index for the current page
+        var startIndex = (currentPage - 1) * itemsPerPage;
+        var endIndex = Math.min(startIndex + itemsPerPage, response.body.data.length);
 
-                for (var i = 0; i < response.body.data.length; i++) {
+        for (var i = startIndex; i < endIndex; i++) {
+            var product = response.body.data[i];
 
-                    var formattedHarga = parseFloat(response.body.data[i].harga_brg).toLocaleString('id-ID', {
-                        style: 'currency',
-                        currency: 'IDR',
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0
-                    });
+            // Format harga without trailing zeros
+            var formattedHarga = parseFloat(product.harga_brg).toLocaleString('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
 
-                    tbodyContent += `
-                        <tr>
-                        <td hidden>${response.body.data[i].kode_brg}</td>
-                            <th style="width: 10%;" class="align-middle" colspan="2" rowspan="5">
-                                <img class="bg-white" src="` + urlGambar + `${response.body.data[i].gambar_brg}" alt=""
-                                    style="width: 200px; border-radius: 20px">
-                            </th>
-                            <th class="bg-white text-center" style="border-radius: 20px" colspan="3">${response.body.data[i].nama_brg}</th>
-                            <th style="width: 5%;" class="align-middle" rowspan="5">
-                                <button class="btn btn-danger btn-md">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                                <br />
-                                <br />
-                                <a href="?page=editproduk&kode_brg=${response.body.data[i].kode_brg}">
-                                    <button class="btn btn-success btn-md">
-                                        <i class="fa fa-edit"></i>
+            var productCard = `
+                <tr>
+                                <td hidden>${response.body.data[i].kode_brg}</td>
+                                <th style="width: 10%;" class="align-middle" colspan="2" rowspan="5">
+                                    <img class="bg-white" src="${urlGambar}${response.body.data[i].gambar_brg}" alt=""
+                                        style="width: 200px; border-radius: 20px">
+                                </th>
+                                <th class="bg-white text-center" style="border-radius: 20px" colspan="3">${response.body.data[i].nama_brg}</th>
+                                <th style="width: 5%;" class="align-middle" rowspan="5">
+                                    <button class="btn btn-danger btn-md">
+                                        <i class="fa fa-trash"></i>
                                     </button>
-                                </a>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td><strong>Harga</strong></td>
-                            <td colspan="2">${formattedHarga}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Kategori</strong></td>
-                            <td colspan="2">${response.body.data[i].nama_kategori}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Stok</strong></td>
-                            <td colspan="2">${response.body.data[i].stok_brg}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Deskripsi</strong></td>
-                            <td colspan="2">${response.body.data[i].deskripsi_brg}</td>
-                        </tr>`;
-                }
-
-                $('#produk tbody').html(tbodyContent);
-            } else {
-                console.error('Failed to fetch data from API.');
-            }
-        },
-        error: function () {
-            console.error('Error in AJAX request.');
+                                    <br />
+                                    <br />
+                                    <a href="?page=editproduk&kode_brg=${response.body.data[i].kode_brg}">
+                                        <button class="btn btn-success btn-md">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                    </a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><strong>Harga</strong></td>
+                                <td colspan="2">${formattedHarga}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kategori</strong></td>
+                                <td colspan="2">${response.body.data[i].nama_kategori}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stok</strong></td>
+                                <td colspan="2">${response.body.data[i].stok_brg}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deskripsi</strong></td>
+                                <td colspan="2">${response.body.data[i].deskripsi_brg}</td>
+                            </tr>
+            `;
+            // Append the product card to the #dataProduk element
+            dataProduk.append(productCard);
         }
-    });
-}
-
-// Initial fetch for the first page
-fetchProducts(currentPage);
-
-// Next Page Button Click
-$(document).on('click', '#nextPage', function () {
-    currentPage++;
-    fetchProducts(currentPage);
-});
-
-// Previous Page Button Click
-$(document).on('click', '#prevPage', function () {
-    if (currentPage > 1) {
-        currentPage--;
-        fetchProducts(currentPage);
     }
+
+    function fetchData() {
+        $.ajax({
+            type: "GET",
+            url: host + "produk/read_produk.php",
+            dataType: "json",
+            async: true,
+            success: function (response) {
+                if (response.status === 200) {
+                    console.log(response);
+                    displayProducts(response);
+                    updateNavigationButtons(response.body.data.length);
+                } else {
+                    console.error('Gagal mengambil data dari API.');
+                }
+            },
+            error: function () {
+                console.error('Terjadi kesalahan dalam permintaan AJAX.');
+            }
+        });
+    }
+
+    function updateNavigationButtons(totalItems) {
+        var prevButton = $("#prevButton");
+        var nextButton = $("#nextButton");
+
+        // Enable/disable "Previous" button based on the current page
+        prevButton.prop("disabled", currentPage === 1);
+
+        // Enable/disable "Next" button based on the current page and total items
+        nextButton.prop("disabled", (currentPage * itemsPerPage) >= totalItems);
+    }
+
+    // Initial fetch
+    fetchData();
+
+    // Button click event for next page
+    $("#nextButton").on("click", function () {
+        currentPage++;
+        fetchData();
+    });
+
+    // Button click event for previous page
+    $("#prevButton").on("click", function () {
+        currentPage = Math.max(currentPage - 1, 1);
+        fetchData();
+    });
 });
 
 // API READ PRODUK \\

@@ -45,25 +45,22 @@
             </p>
         </div>
     </div>
-    <div class="row" id ="dataProduk">
+    <div class="row" id="dataProduk">
         <!-- DATA DARI DATABASE -->
     </div>
+    <br>
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a id="prevButton" class="page-link text-dark" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo; Previous &laquo;</span>
+                </a>
+            <li class="page-item">
+                <a id="nextButton" class="page-link text-dark" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo; Next &raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <br>
-<nav aria-label="Page navigation example ">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a id="previousBtn" class="page-link text-dark" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-        <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-        <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
-        <li class="page-item">
-            <a id="nextBtn" class="page-link text-dark" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>

@@ -8,10 +8,10 @@
     </div>
     <div class="row justify-content-between">
         <div class="col-4 text-left ml-5">
-            <button id="prevPage" class="btn bg-custom btn-lg" role="button">Previous Page</button>
+            <button id="prevButton" class="btn bg-custom btn-lg" role="button">Previous Page</button>
         </div>
         <div class="col-4 text-right mr-5">
-            <button id="nextPage" class="btn bg-custom btn-lg" role="button">Next Page</button>
+            <button id="nextButton" class="btn bg-custom btn-lg" role="button">Next Page</button>
         </div>
     </div>
     <br>
