@@ -1,12 +1,15 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/searching.js"></script>
 <div class="content">
     <div class="container" style="margin-top: 100px">
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
                 <div class="input-group mb-3">
-                    <input type="search" class="form-control" placeholder="iPhone" Montserrat-label="iPhone" Montserrat-describedby="button-addon2" />
+                    <input name="keyword" id="keyword" type="search" class="form-control" placeholder="iPhone" Montserrat-label="iPhone" Montserrat-describedby="button-addon2" />
                     <div class="input-group-append mr-2">
-                        <a class="btn btn-outline-secondary" href="?page=searching">Cari</a>
+                        <button type="button" id="cari" name="cari" class="btn btn-outline-secondary">Cari</button>
                     </div>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" onclick="on()" Montserrat-haspopup="true" Montserrat-expanded="false">
