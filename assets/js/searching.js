@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var urlGambar = host + "produk/gambar/";
     var currentPage = 1;
-    var itemsPerPage = 4;
+    var itemsPerPage = 8;
     var currentKeyword = ""; // Tambahkan variabel untuk menyimpan kata kunci
     
     function displayProducts(response) {
@@ -55,14 +55,17 @@ $(document).ready(function () {
     
         if (keyword.trim() !== '') {
             apiUrl += "?keyword=" + encodeURIComponent(keyword);
+            currentPage =1;
         }
     
         $.ajax({
             type: "GET",
             url: apiUrl,
+            data:{page: currentPage},
             dataType: "json",
             async: true,
             success: function (response) {
+                console.log(response);
                 if (response.status === 200) {
                     console.log(response);
                     displayProducts(response);
@@ -97,16 +100,18 @@ $(document).ready(function () {
         var keyword = document.getElementById('keyword').value;
     
         if (keyword.trim() !== '') {
-            resetPage(); 
             currentKeyword = keyword;
             console.log(currentKeyword);
             // Gunakan fetch untuk mengirimkan permintaan GET ke API backend dengan kata kunci
+            currentPage = 1;
+            fetchData(currentKeyword); 
             $.ajax({
                 type: "GET",
                 url: host + 'produk/search.php?keyword=' + encodeURIComponent(keyword),
                 dataType: "json",
                 async: true,
                 success: function (response) {
+                    console.log("Received data:", response); 
                     if (response.status === 200) {
                         console.log(response);
                         // Call the displayProducts function with the data
@@ -136,6 +141,7 @@ $(document).ready(function () {
 $("#nextButton").on("click", function () {
     currentPage++;
     fetchData(currentKeyword); // Gunakan currentKeyword saat mencari
+    console.log(currentKeyword);
 });
 
 // Button click event for previous page
