@@ -62,6 +62,7 @@ $(document).ready(function () {
                 console.error('Error:', error);
             }
         });
+        
     }
 
     // Function to find category by id in an array

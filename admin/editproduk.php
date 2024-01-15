@@ -7,7 +7,7 @@
 <br>
 <br>
 <!-- edit form column -->
-<form action="" id="formProduk" enctype="multipart/form-data">
+<form action="" method="post" id="formProduk" enctype="multipart/form-data">
     <div class="row justify-content-center">
         <!-- left column -->
         <div class="pt-1">
@@ -16,7 +16,7 @@
                 </div>
                 <br>
                 <label class="gambar" for="image">
-                    <input type="file" id="image" accept="image/png, image/jpeg" name="gambar_brg" onchange="preview()" multiple>
+                    <input type="file" id="image" accept="image/png, image/jpeg" name="gambar_brg">
                     <i class="fas fa-upload"></i> &nbsp; Choose A Photo
                 </label>
             </div>
@@ -52,11 +52,11 @@
             <label class="col-lg-3 control-label">Kategori</label>
             <label for="">:</label>
             <div class="col-lg-7">
-                <select id="nama_kategori" class="form-control bg-custom" name="nama_kategori" id="">
-                    <option id="nama_kategori" value=""></option>
+                <select id="nama_kategori" class="form-control bg-custom" name="nama_kategori">
+                    <!-- <option id="nama_kategori" value=""></option>
                     <option value="Smartphone">Smartphone</option>
                     <option value="Laptop">Laptop</option>
-                    <option value="Tablet">Tablet</option>
+                    <option value="Tablet">Tablet</option> -->
                 </select>
             </div>
         </div>
