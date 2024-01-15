@@ -53,7 +53,7 @@
             <label for="">:</label>
             <div class="col-lg-7">
                 <select id="nama_kategori" class="form-control bg-custom" name="nama_kategori" id="">
-                    <option value="">- Pilih -</option>
+                    <option id="nama_kategori" value=""></option>
                     <option value="Smartphone">Smartphone</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Tablet">Tablet</option>
