@@ -52,13 +52,11 @@
                 <label class="col-lg-3 control-label">Kategori</label>
                 <label for="">:</label>
                 <div class="col-lg-7">
-                    <select class="form-control bg-custom" name="nama_kategori" id="">
-                        <option value="">- Pilih -</option>
-                        <option value="Smartphone">Smartphone</option>
-                        <option value="Laptop">Laptop</option>
-                        <option value="Tablet">Tablet</option>
-                    </select>
-                </div>
+                <select id="nama_kategori" class="form-control bg-custom" name="nama_kategori">
+                    <option value="" hidden>-- Pilih --</option>
+                 <!-- DATA DARI API -->
+                </select>
+            </div>
             </div>
             <div class="form-group row">
                 <label class="col-lg-3 control-label">Stock Barang</label>

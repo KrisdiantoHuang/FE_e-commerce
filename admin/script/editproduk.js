@@ -1,11 +1,73 @@
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const kode_brg = urlParams.get('kode_brg');
+    const categoryId = urlParams.get('kode_brg');
 
-    if (kode_brg) {
-        // If kode_brg is present in the URL, set it in the input field
-        $('#kode_brg').val(kode_brg);
+    $.ajax({
+        type: "GET",
+        url: host + "kategori/read_kategori.php",
+        dataType: "json",
+        async: true,
+        success: function (data) {
+            if (data.status === 200) {
+               
+                var kategori = data.body.data;
+                
+                for (var i = 0; i < kategori.length; i++) {
+                    $('#nama_kategori').append(`
+                        
+                            <option value="`+ kategori[i].nama_kategori +`">`+ kategori[i].nama_kategori +`</option>
+                        
+                    `);
+                }
+
+                // Initialize DataTable
+                $("#kategori").dataTable();
+            } else {
+                console.log('Failed to fetch data');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: host + "produk/read_produk.php",
+        // data: { id_kategori: categoryId },
+        dataType: "json",
+        async: true,
+        success: function (data) {
+            if (data.status === 200) {
+                
+                // Find the correct category in the array
+                var categoryData = findCategoryById(data.body.data, categoryId);
+                if (categoryData) {
+                    // Set the value of the input field with the existing category name
+                    $('#kode_brg').val(categoryData.kode_brg);
+                    $('#nama_brg').val(categoryData.nama_brg);
+                    $('#nama_kategori').val(categoryData.nama_kategori);
+                    $('#harga_brg').val(categoryData.harga_brg);
+                    $('#stok_brg').val(categoryData.stok_brg);
+                    $('#deskripsi_brg').val(categoryData.deskripsi_brg);
+                } else {
+                    console.log('Category with id ' + categoryId + ' not found');
+                }
+            } else {
+                console.log('Failed to fetch category details');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
+
+    function findCategoryById(categories, id) {
+        return categories.find(function (category) {
+            return category.kode_brg == id;
+        });
     }
+
 });
 
 $('#formProduk').submit(function (e) {
