@@ -13,11 +13,15 @@ $(document).ready(function () {
         async: true,
         success: function (data) {
             if (data.status === 200) {
-                // Check if it's a single category or an array of categories
-                var categoryData = Array.isArray(data.body.data) ? data.body.data[0] : data.body.data;
+                // Find the correct category in the array
+                var categoryData = findCategoryById(data.body.data, categoryId);
 
-                // Set the value of the input field with the existing category name
-                $('#kategori').val(categoryData.nama_kategori);
+                if (categoryData) {
+                    // Set the value of the input field with the existing category name
+                    $('#kategori').val(categoryData.nama_kategori);
+                } else {
+                    console.log('Category with id ' + categoryId + ' not found');
+                }
             } else {
                 console.log('Failed to fetch category details');
             }
@@ -57,6 +61,13 @@ $(document).ready(function () {
             error: function (xhr, status, error) {
                 console.error('Error:', error);
             }
+        });
+    }
+
+    // Function to find category by id in an array
+    function findCategoryById(categories, id) {
+        return categories.find(function (category) {
+            return category.id_kategori == id;
         });
     }
 });
