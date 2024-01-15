@@ -58,6 +58,9 @@ $(document).ready(function () {
             </div>
             <div class="col-md-4 mb-4" style="border-radius: 0.9375rem; border: 1px solid #DACDCD; padding-left: 10px; padding-right: 10px;">
                 <span class="product-name">${product.nama_brg}</span>
+                <br>
+                <span ><b>kategori : ${product.nama_kategori} </b></span>
+               
                 <div class="rectangle-tag">
                     <span class="product-price">Rp ${parseFloat(product.harga_brg).toLocaleString('id-ID')}</span>
                 </div>
